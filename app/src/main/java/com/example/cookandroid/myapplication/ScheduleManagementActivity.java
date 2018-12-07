@@ -4,11 +4,22 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class ScheduleManagementActivity extends AppCompatActivity {
+
+    private PopupWindow mPopUpWindow;
+    LinearLayout layout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +28,9 @@ public class ScheduleManagementActivity extends AppCompatActivity {
 
         setTitle("Mini Calendar");
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,9 +57,16 @@ public class ScheduleManagementActivity extends AppCompatActivity {
                 startActivity(deletion);
                 return true;
             case R.id.menu3: // 보기 메뉴를 클릭했을 때 호출
-                Toast.makeText(getApplicationContext(), "보기", Toast.LENGTH_LONG).show();
+              View popupView=getLayoutInflater().inflate(R.layout.seeing_popup_window, null);
+
+              mPopUpWindow=new PopupWindow(popupView, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+              mPopUpWindow.setAnimationStyle(0);
+              mPopUpWindow.showAtLocation(popupView, Gravity.NO_GRAVITY,750,250);
+
                 return true;
-        }
+            }
+
         return super.onOptionsItemSelected(item);
     }
 }
