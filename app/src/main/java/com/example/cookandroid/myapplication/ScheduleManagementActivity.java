@@ -31,19 +31,17 @@ public class ScheduleManagementActivity extends AppCompatActivity {
         int id=item.getItemId();
 
         switch (id) {
-            case R.id.menu1:
-                Toast.makeText(getApplicationContext(), "완료 못한 일정만 보기", Toast.LENGTH_LONG).show();
-                return true;
-            case R.id.menu2: // 추가 메뉴를 클릭했을 때 호출
+
+            case R.id.menu1: // 추가 메뉴를 클릭했을 때 호출
                 Intent addition=new Intent(getApplicationContext(), ScheduleAdditionActivity.class);
                 startActivity(addition);
                 return true;
-            case R.id.menu3: // 삭제 메뉴를 클릭했을 때 호출
+            case R.id.menu2: // 삭제 메뉴를 클릭했을 때 호출
                 Intent deletion=new Intent(getApplicationContext(), ScheduleDeletionActivity.class);
                 startActivity(deletion);
                 return true;
-            case R.id.menu4:
-                Toast.makeText(getApplicationContext(), "정렬", Toast.LENGTH_LONG).show();
+            case R.id.menu3:
+                Toast.makeText(getApplicationContext(), "보기", Toast.LENGTH_LONG).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
