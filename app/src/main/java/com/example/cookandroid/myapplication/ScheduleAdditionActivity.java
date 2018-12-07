@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -42,17 +43,6 @@ public class ScheduleAdditionActivity extends AppCompatActivity {
         setTitle("일정 추가");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Button btnReturn=(Button) findViewById(R.id.btnReturn);
-        btnReturn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(), ScheduleManagementActivity.class);
-                startActivity(i);
-            }
-        });
-
-
 
         pickdate = (Button) findViewById(R.id.pickdate);
         delbutton = (Button) findViewById(R.id.delbutton);
@@ -187,6 +177,18 @@ public class ScheduleAdditionActivity extends AppCompatActivity {
     }
     private void updateDisplay() {
         pickdate.setText(new StringBuilder().append(myear).append("-").append(mmonth + 1).append("-").append(mday));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home: {
+                Intent i=new Intent(getApplicationContext(), ScheduleManagementActivity.class);
+                startActivity(i);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {

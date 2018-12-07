@@ -14,6 +14,8 @@ public class ScheduleManagementActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_management);
+
+        setTitle("Mini Calendar");
     }
 
     @Override
@@ -40,7 +42,7 @@ public class ScheduleManagementActivity extends AppCompatActivity {
                 Intent deletion=new Intent(getApplicationContext(), ScheduleDeletionActivity.class);
                 startActivity(deletion);
                 return true;
-            case R.id.menu3:
+            case R.id.menu3: // 보기 메뉴를 클릭했을 때 호출
                 Toast.makeText(getApplicationContext(), "보기", Toast.LENGTH_LONG).show();
                 return true;
         }
